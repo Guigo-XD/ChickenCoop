@@ -22,6 +22,7 @@ AddEventHandler("chikens:openMenu", function()
             desc = "pegar",
         },
         {
+            --TODO alterar para comprar
             label = "Recrutar Galinha",
             value = 'addChicken',
             desc = "adcionar",
@@ -31,6 +32,7 @@ AddEventHandler("chikens:openMenu", function()
             value = 'feed',
             desc = "Alimentar",
         },
+        --TODO acrescentar status das galinhas
 
     }
 
@@ -114,7 +116,7 @@ function AddChicken()
 
     while not HasModelLoaded(GetHashKey(model)) do
         Wait(500)
-        modelrequest(GetHashKey(model))
+        Modelrequest(GetHashKey(model))
     end
     local npc = CreatePed(GetHashKey(model), myCoop.x + math.random(-2, 2), myCoop.y + 2, myCoop.z, 00, false, false, 0,
         0)
@@ -142,7 +144,7 @@ function _GET_DEFAULT_RELATIONSHIP_GROUP_HASH(iParam0)
     return Citizen.InvokeNative(0x3CC4A718C258BDD0, iParam0);
 end
 
-function modelrequest(model)
+function Modelrequest(model)
     Citizen.CreateThread(function()
         RequestModel(model)
     end)
